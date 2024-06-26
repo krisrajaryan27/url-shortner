@@ -31,8 +31,6 @@ public class UrlShortnerServiceImpl implements UrlShortnerService{
 
     private static final int REQUEST_LIMIT = 100;
 
-    private static final long REQUEST_WINDOW = 60000L;
-
     @Override
     public String shortenUrl(String longUrl) {
         LOGGER.info("Inside UrlShortener service for shortenURl with longUrl: {}", longUrl);
@@ -90,7 +88,6 @@ public class UrlShortnerServiceImpl implements UrlShortnerService{
 
     private boolean isWithinRequestLimit(String shortAlias){
         LOGGER.info("Inside UrlShortener service to check if request isWithinRequestLimit for shortCode: {}", shortAlias);
-        RequestLog requestLog = requestLogsMap.getOrDefault(shortAlias, new RequestLog());
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime oneMinuteAgo = now.minusMinutes(-1);
         long requestsInLastOneMinute = requestLogsMap.entrySet().stream().
