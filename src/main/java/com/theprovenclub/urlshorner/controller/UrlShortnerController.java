@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Map;
 
 @RestController
@@ -30,6 +31,7 @@ public class UrlShortnerController {
     @PostMapping("/url/shorten")
     public ResponseEntity<ApiResponse> shortenUrl(@RequestParam String longUrl){
         LOGGER.info("Inside UrlShortener controller for shortenURl with longUrl: {}", longUrl);
+        if(longUrl.isEmpty()) throw new IllegalStateException("Incorrect url passed in request");
         ShortenedUrl shortenedUrl = urlShortnerService.shortenUrl(longUrl);
         ApiResponse response = new ApiResponse(shortenedUrl.getShortAlias(), longUrl, shortenedUrl.getCreatedAt(), shortenedUrl.getAccessCount());
         return ResponseEntity.ok().body(response);
