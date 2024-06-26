@@ -32,13 +32,13 @@ public class UrlShortnerServiceImpl implements UrlShortnerService{
     private static final int REQUEST_LIMIT = 100;
 
     @Override
-    public String shortenUrl(String longUrl) {
+    public ShortenedUrl shortenUrl(String longUrl) {
         LOGGER.info("Inside UrlShortener service for shortenURl with longUrl: {}", longUrl);
         String shortAlias = generateShortCode();
         ShortenedUrl shortenedUrl = new ShortenedUrl(longUrl, shortAlias, LocalDateTime.now());
         shortenedUrlMap.put(shortAlias, shortenedUrl);
         LOGGER.info("shortUrl: {} generated for longUrl: {}", shortAlias, longUrl);
-        return shortAlias;
+        return shortenedUrl;
     }
 
     @Override

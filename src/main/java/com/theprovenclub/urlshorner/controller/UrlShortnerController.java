@@ -1,5 +1,7 @@
 package com.theprovenclub.urlshorner.controller;
 
+import com.theprovenclub.urlshorner.model.ApiResponse;
+import com.theprovenclub.urlshorner.model.ShortenedUrl;
 import com.theprovenclub.urlshorner.service.UrlShortnerService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -26,10 +28,11 @@ public class UrlShortnerController {
     private UrlShortnerService urlShortnerService;
 
     @PostMapping("/url/shorten")
-    public ResponseEntity<String> shortenUrl(@RequestParam String longUrl){
+    public ResponseEntity<ApiResponse> shortenUrl(@RequestParam String longUrl){
         LOGGER.info("Inside UrlShortener controller for shortenURl with longUrl: {}", longUrl);
-        String shortUrl = urlShortnerService.shortenUrl(longUrl);
-        return ResponseEntity.ok().body(shortUrl);
+        ShortenedUrl shortenedUrl = urlShortnerService.shortenUrl(longUrl);
+        ApiResponse response = new ApiResponse(shortenedUrl.getShortAlias(), longUrl, shortenedUrl.getCreatedAt(), shortenedUrl.getAccessCount());
+        return ResponseEntity.ok().body(response);
     }
 
     @GetMapping("/url/redirect/{shortCode}")
