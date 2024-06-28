@@ -5,4 +5,5 @@ Functional Requirements:
 
 Non-Functional Requirements:
 1. High Scalability for high traffic
-2. should handle througput of 500 requests per second![](../../../../../../../../var/folders/pn/nzxv716j66d47pltcm059_f00000gp/T/TemporaryItems/NSIRD_screencaptureui_cSrpYF/Screenshot 2024-06-28 at 2.27.52 PM.png)
+2. should handle througput of 500 requests per second
+![img.png](img.png)
