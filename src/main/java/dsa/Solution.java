@@ -1,9 +1,13 @@
 package dsa;
 
+import lombok.Getter;
+
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 
+@Getter
 class Point {
     int x;
     int y;
@@ -13,13 +17,6 @@ class Point {
         this.y = y;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
 }
 
 public class Solution {
@@ -37,7 +34,7 @@ public class Solution {
 
     public static int minCostToConnectAllPoints(List<Point> points) {
         int n = points.size();
-        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[0] - b[0]);
+        PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[0]));
         int[] parent = new int[n];
         int[] rank = new int[n];
 
