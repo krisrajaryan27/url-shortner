@@ -4,7 +4,6 @@
 
 - **Chatgpt (or similar tools) and google use is not allowed.**
 - You are required to keep your camera on and share your entire screen  throughout the challenge
-- once you complete the challenge, please ring us at 7974170622 to assist you with Part 4
 - Once you are done, push your project on a github link and make it private and share it with us
 
 ## **🧠 What's the Mission?**
